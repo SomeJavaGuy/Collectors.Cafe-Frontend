@@ -3,7 +3,10 @@
 
   <Preloader v-show="!initializationDone" text="loading..."></Preloader>
 
-  <v-container v-if="initializationDone">
+<v-container v-if="initializationDone">
+<template>
+  <v-card color="basil">
+
     <UserInfo
       :address="userAddress"
       :myaddress="myAddress"
@@ -15,153 +18,179 @@
       v-on:user-following-change="init"
     />
 
+    <v-tabs
+      v-model="tab"
+      background-color="transparent"
+      color="basil"
+      grow
+    >
+      <v-tab key="tab1" class="light-green lighten-4">
+        SHOWROOM
+      </v-tab>
+      <v-tab key="tab2" class="light-green lighten-4">
+        NFT COLLECTION
+      </v-tab>
+      <v-tab key="tab3" class="light-green lighten-4">
+        OPEN ORDERS
+      </v-tab>
+    </v-tabs>
 
-    <OrderList class="mt-4"
-      :networkid = "network.id"
-      type = "sell_by_maker"
-      :maker = "userAddress"
-      title = "Sell Orders"
-    />
+    <v-tabs-items v-model="tab">
 
-    <OrderList class="mt-4"
-      :networkid = "network.id"
-      type = "bid_by_maker"
-      :maker = "userAddress"
-      title = "Bid Orders"
-    />
+      <v-tab-item key="tab1" class="">
 
-  </v-container>
+        <div v-if="network.id == 1" >
+          <div v-if="userHighlightList.length == 0" style="padding: 30px; text-align: center;">
+            Showroom Empty
+          </div>
 
-  <!----------------------------------------------------------->
-  <!-- Begin Mainnet -->
-  <!----------------------------------------------------------->
-  <v-container v-if="network.id == 1 && initializationDone">
+          <v-layout wrap>
+            <v-flex
+              v-for="(item, i) in userHighlightList"
+              :key="i"
+              md4 sm6 xs12
+            >
+
+              <NFTCard
+                :info = "item"
+                :key = "'nftcard' + i"
+                :myaddress = "myAddress"
+                :networkid = "network.id"
+                :mynftlikelist = "account.nftLikeList"
+                :myhightlightlist = "account.nftHighlightList"
+                v-on:token-like-change="init"
+                v-on:highlight-change="init"
+              >
+              </NFTCard>
 
 
-    <div v-if="userHighlightList.length == 0">
-      Showroom Empty
-    </div>
+            </v-flex>
+          </v-layout>
+        </div>
 
-    <v-layout wrap>
-      <v-flex
-        v-for="(item, i) in userHighlightList"
-        :key="i"
-        md4 sm6 xs12
-      >
+        <div v-if="network.id != 1" >
 
-        <NFTCard
-          :info = "item"
-          :key = "'nftcard' + i"
-          :myaddress = "myAddress"
+          <div v-if="userHighlightList.length == 0">
+            Showroom Empty
+          </div>
+
+          <v-layout wrap>
+            <v-flex
+              v-for="(item, i) in userHighlightList"
+              :key="i"
+              md4 sm6 xs12
+            >
+
+            <TestnetNFTCard
+              :info = "item"
+              :key = "'nftcard' + i"
+              :myaddress = "myAddress"
+              :networkid = "network.id"
+              :mynftlikelist = "account.nftLikeList"
+              :myhightlightlist = "account.nftHighlightList"
+              v-on:token-like-change="init"
+              v-on:highlight-change="init"
+            >
+            </TestnetNFTCard>
+
+
+            </v-flex>
+          </v-layout>
+        </div>
+
+      </v-tab-item>
+
+      <v-tab-item key="tab2">
+
+
+        <div v-if="network.id == 1" >
+
+          <div v-if="NFTList.length == 0">
+            No NFT
+          </div>
+
+          <v-layout wrap>
+            <v-flex
+              v-for="(item, i) in NFTList"
+              :key="i"
+              md4 sm6 xs12
+            >
+
+              <NFTCard
+                :info = "item"
+                :key = "'nftcard' + i"
+                :myaddress = "myAddress"
+                :networkid = "network.id"
+                :mynftlikelist = "account.nftLikeList"
+                :myhightlightlist = "account.nftHighlightList"
+                v-on:token-like-change="init"
+                v-on:highlight-change="init"
+              >
+              </NFTCard>
+
+
+            </v-flex>
+          </v-layout>
+
+        </div>
+
+        <div v-if="network.id != 1" >
+
+          <div v-if="testnetNFTList.length == 0">
+            No NFT
+          </div>
+
+          <v-layout wrap>
+            <v-flex
+              v-for="(item, i) in testnetNFTList"
+              :key="i"
+              md4 sm6 xs12
+            >
+
+            <TestnetNFTCard
+              :info = "item"
+              :key = "'nftcard' + i"
+              :myaddress = "myAddress"
+              :networkid = "network.id"
+              :mynftlikelist = "account.nftLikeList"
+              :myhightlightlist = "account.nftHighlightList"
+              v-on:token-like-change="init"
+              v-on:highlight-change="init"
+            >
+            </TestnetNFTCard>
+
+
+            </v-flex>
+          </v-layout>
+
+        </div>
+
+      </v-tab-item>
+
+      <v-tab-item key="tab3">
+
+        <OrderList class="mt-4"
           :networkid = "network.id"
-          :mynftlikelist = "account.nftLikeList"
-          :myhightlightlist = "account.nftHighlightList"
-          v-on:token-like-change="init"
-          v-on:highlight-change="init"
-        >
-        </NFTCard>
+          type = "sell_by_maker"
+          :maker = "userAddress"
+          title = "Sell Orders"
+        />
 
-
-      </v-flex>
-    </v-layout>
-
-    <div v-if="NFTList.length == 0">
-      No NFT
-    </div>
-
-    <v-layout wrap>
-      <v-flex
-        v-for="(item, i) in NFTList"
-        :key="i"
-        md4 sm6 xs12
-      >
-
-        <NFTCard
-          :info = "item"
-          :key = "'nftcard' + i"
-          :myaddress = "myAddress"
+        <OrderList class="mt-4"
           :networkid = "network.id"
-          :mynftlikelist = "account.nftLikeList"
-          :myhightlightlist = "account.nftHighlightList"
-          v-on:token-like-change="init"
-          v-on:highlight-change="init"
-        >
-        </NFTCard>
+          type = "bid_by_maker"
+          :maker = "userAddress"
+          title = "Bid Orders"
+        />
 
 
-      </v-flex>
-    </v-layout>
+      </v-tab-item>
 
-  </v-container>
-  <!----------------------------------------------------------->
-  <!-- END Mainnet -->
-  <!----------------------------------------------------------->
+    </v-tabs-items>
 
-
-  <!----------------------------------------------------------->
-  <!-- Begin Testnet -->
-  <!----------------------------------------------------------->
-  <v-container v-if="network.id == 4 && initializationDone">
-
-    <div v-if="userHighlightList.length == 0">
-      Showroom Empty
-    </div>
-
-    <v-layout wrap>
-      <v-flex
-        v-for="(item, i) in userHighlightList"
-        :key="i"
-        md4 sm6 xs12
-      >
-
-      <TestnetNFTCard
-        :info = "item"
-        :key = "'nftcard' + i"
-        :myaddress = "myAddress"
-        :networkid = "network.id"
-        :mynftlikelist = "account.nftLikeList"
-        :myhightlightlist = "account.nftHighlightList"
-        v-on:token-like-change="init"
-        v-on:highlight-change="init"
-      >
-      </TestnetNFTCard>
-
-
-      </v-flex>
-    </v-layout>
-
-
-    <div v-if="testnetNFTList.length == 0">
-      No NFT
-    </div>
-
-    <v-layout wrap>
-      <v-flex
-        v-for="(item, i) in testnetNFTList"
-        :key="i"
-        md4 sm6 xs12
-      >
-
-      <TestnetNFTCard
-        :info = "item"
-        :key = "'nftcard' + i"
-        :myaddress = "myAddress"
-        :networkid = "network.id"
-        :mynftlikelist = "account.nftLikeList"
-        :myhightlightlist = "account.nftHighlightList"
-        v-on:token-like-change="init"
-        v-on:highlight-change="init"
-      >
-      </TestnetNFTCard>
-
-
-      </v-flex>
-    </v-layout>
-
-  </v-container>
-  <!----------------------------------------------------------->
-  <!-- End Testnet -->
-  <!----------------------------------------------------------->
+  </v-card>
+</template>
+</v-container>
 
 
   <!-- Begin Notification Bar -->
@@ -193,6 +222,7 @@ import { config } from '@/config'
 
 export default {
   data: () => ({
+    tab: null,
     loading: true,
     initializationDone: false,
     networkId: null,

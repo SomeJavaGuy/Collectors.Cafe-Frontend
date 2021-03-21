@@ -1,7 +1,7 @@
 <template>
   <div>
 
-  <v-card class="my-2 pa-3 grey lighten-4">
+  <div class="my-2 pa-3 orange lighten-5">
       <v-row>
 
         <v-col cols="6" sm="2">
@@ -71,7 +71,7 @@
         </v-col>
     </v-row>
 
-  </v-card>
+  </div>
 
 
 
