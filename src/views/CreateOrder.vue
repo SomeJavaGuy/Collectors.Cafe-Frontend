@@ -8,7 +8,7 @@
 
   <v-container v-if="initializationDone">
 
-  <v-card class="mx-auto" style="max-width: 500px">
+  <v-card class="mx-auto pa-4" style="max-width: 600px">
 
     <div>
 
@@ -18,11 +18,11 @@
 
   </div>
 
-    <v-form ref="form" >
+    <v-form ref="form" class="my-3 text-center" >
 
       <v-row dense>
 
-        <v-col cols="12" md="6">
+        <v-col cols="12">
           <v-text-field class="mx-2"
             outlined dense color="gray" persistent-hint
             label="Amount"

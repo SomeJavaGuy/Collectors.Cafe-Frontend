@@ -328,7 +328,7 @@ export default {
         console.log(this.NFTList)
       } catch (err) {
         console.log(err)
-        this.showNotification('error', 'Error occurred!')
+        // this.showNotification('error', 'Error occurred!')
       } finally {
       }
 
@@ -354,7 +354,7 @@ export default {
         console.log(this.testnetNFTList)
       } catch (err) {
         console.log(err)
-        this.showNotification('error', 'Error occurred!')
+        // this.showNotification('error', 'Error occurred!')
       } finally {
       }
 
