@@ -68,19 +68,19 @@
       >Rinkeby Testnet</v-chip>
 
        <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn small text>
+        <v-btn text>
           <router-link class="navbar-link" :to="{name: 'app-home'}">App</router-link>
         </v-btn>
       </v-toolbar-items>
 
        <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn small text>
+        <v-btn  text>
           <router-link class="navbar-link" :to="{ name: 'orders-all', params: { type: 'sell'} }">Orders</router-link>
         </v-btn>
       </v-toolbar-items>
 
        <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn small text>
+        <v-btn text>
           <router-link class="navbar-link" :to="{name: 'logout'}">Logout</router-link>
         </v-btn>
       </v-toolbar-items>

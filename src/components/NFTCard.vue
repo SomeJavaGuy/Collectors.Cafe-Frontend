@@ -155,6 +155,7 @@ export default {
     retryCount: 0,
     jobWaiting: null,
     retryWaiting: null,
+    maxTotal: 20,
     maxToLoad: 5,
     loading: true,
     initializationDone: false,
@@ -289,6 +290,9 @@ export default {
 
       if (this.info.counter <= this.maxToLoad) {
         await this.getNFTMetaData()
+      }
+      else if (this.info.counter > this.maxTotal) {
+        // skip
       }
       else {
         const sleepTime = this.info.counter * 2000
