@@ -4,12 +4,12 @@
   <v-layout row>
     <v-flex xs12 md6 pa-5 class="hidden-sm-and-down">
       <div class="text-center">
-        <v-icon dark color="#b0f9b2" style="font-size: 300px">business</v-icon>
+        <v-icon dark color="#b0f9b2" style="font-size: 300px">home</v-icon>
       </div>
     </v-flex>
     <v-flex xs12 md6 pa-5>
       <div class="mx-auto" style="max-width: 400px">
-        <h1 style="color: white; margin-top: 40px; margin-bottom: 20px">A Decentralized Social Network for Non-fungible Token Collectors</h1>
+        <h1 style="color: white; margin-top: 40px; margin-bottom: 20px">Discover, Exhibit and Trade NFTs (Non-fungible Tokens) Across Multiple Platforms</h1>
         <LoginForm />
       </div>
     </v-flex>
@@ -18,7 +18,7 @@
 
 <v-container>
   <div class="mx-auto text-center my-4" style="max-width: 800px; color: rgb(155, 155, 155);">
-    <h2>CollectorHub is a decentralized social network for non-fungible token collectors to maintain, display and swap their collectibles.</h2>
+    <h2>Collectors.Cafe is a social network to discover, exhibit and trade NFTs (non-fugible tokens) across multiple platforms.</h2>
   </div>
 </v-container>
 </div>
