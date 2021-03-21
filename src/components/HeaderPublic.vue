@@ -46,8 +46,7 @@
     <v-app-bar
       app
       color="white"
-      light
-      flat
+      elevation="1"
     >
       <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       </v-toolbar-side-icon>
