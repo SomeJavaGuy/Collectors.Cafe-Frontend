@@ -1,7 +1,7 @@
 <template>
 <div class="ma-3">
 
-    <v-card class="my-2 pa-3 grey lighten-4">
+    <v-card class="my-2 pa-3">
       <div class="text-center mb-2" v-if="title"><strong>{{ title }}</strong></div>
 
       <div v-if="loading" class="text-center">Loading</div>
@@ -16,8 +16,6 @@
           </div>
         </div>
       </div>
-
-
     </v-card>
 
 </div>

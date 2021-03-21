@@ -1,6 +1,8 @@
 <template>
   <div>
 
+    <h1 class="text-center" style="margin-top: 20px">Orders</h1>
+
   <Preloader v-show="!initializationDone" text="loading..."></Preloader>
 
   <v-container v-if="initializationDone">

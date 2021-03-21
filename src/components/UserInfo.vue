@@ -66,11 +66,19 @@
                 Unfollow
               </v-btn>
             </span>
+            <span class="ml-3">
+              <v-btn small @click="showSearch=!showSearch">
+                <v-icon>mdi-magnify</v-icon>
+              </v-btn>
+            </span>
           </v-card-actions>
 
         </v-col>
     </v-row>
 
+    <div v-show="showSearch" style="margin-bottom: -30px">
+      <UserSearch />
+    </div>
   </div>
 
 
@@ -82,15 +90,18 @@
 
 import { config } from '@/config'
 import UserSummary from "@/components/UserSummary"
+import UserSearch from "@/components/UserSearch"
 export default {
   props: ['address', 'myaddress', 'networkid', 'followers', 'followees', 'myfollowers', 'myfollowees'],
   data () {
     return {
       followLoading: false,
+      showSearch: false,
     }
   },
   components: {
     UserSummary,
+    UserSearch
   },
   computed: {
     isMyself: function () {

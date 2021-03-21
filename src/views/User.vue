@@ -70,7 +70,7 @@
 
         <div v-if="network.id != 1" >
 
-          <div v-if="userHighlightList.length == 0">
+          <div v-if="userHighlightList.length == 0" style="padding: 30px; text-align: center;">
             Showroom Empty
           </div>
 
@@ -105,7 +105,7 @@
 
         <div v-if="network.id == 1" >
 
-          <div v-if="NFTList.length == 0">
+          <div v-if="NFTList.length == 0" style="padding: 30px; text-align: center;">
             No NFT
           </div>
 
@@ -136,7 +136,7 @@
 
         <div v-if="network.id != 1" >
 
-          <div v-if="testnetNFTList.length == 0">
+          <div v-if="testnetNFTList.length == 0" style="padding: 30px; text-align: center;">
             No NFT
           </div>
 

@@ -8,17 +8,12 @@
 
   <v-container v-if="initializationDone">
 
-  <v-card class="mx-auto" style="max-width: 500px">
-
-    <div>
-
     Type: {{ orderType }} <br />
     Contract: {{ contractAddress }} <br/>
     tokenID: {{ tokenId }}
 
-  </div>
 
-    <v-form ref="form" >
+    <v-form ref="form">
 
       <v-row dense>
 
@@ -56,7 +51,7 @@
 
 
 
-  </v-card>
+
   </v-container>
 
 
